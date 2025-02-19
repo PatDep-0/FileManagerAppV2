@@ -1,20 +1,45 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      File Manager
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- First Empty , must show ion-fab first-->
+<ion-fab>
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+<ion-content>
+  <ion-item>
+    <ion-label position = "floating">File Name</ion-label>
+    <ion-input [(ngModel)] = "fileName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position = "floating">File Content</ion-label>
+    <ion-textarea [(ngModel)] = "fileContent"></ion-textarea>
+  </ion-item>
+
+  <!-- <ion-button expand="full" (click)="saveFile()">Save File</ion-button> --> 
+  <!-- Will be replaced with -->
+  <!-- <ion-button expand="full" (click)="updateFile()">Update File</ion-button> -->
+
+  <ion-button expand="full" (click)="createFile()">Create File</ion-button>
+  <ion-button expand="full" (click)="readFile()">Read File</ion-button>
+  <ion-button expand="full" (click)="deleteFile()">Delete File</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let file of fileList">
+      {{ file }}
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<!-- Navigation 2 buttons, idk the 1st, but the other one is the existing files -->
+<!-- Another Page -->
+<!-- If you choose a file, will show an Action sheet, to Open/Edit File and to Delete File, will then move back to first Page for Updates if Open/Edit -->
